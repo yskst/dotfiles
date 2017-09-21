@@ -27,6 +27,7 @@ set smartindent " insert indent when move to new line.
 set showmatch
 set number      " show line number.
 set cursorline  " highlight the screen line of the cursor.
+set cursorcolumn
 set title       " set terminal's title.
 
 set wildmenu    " use complecation of command line.
