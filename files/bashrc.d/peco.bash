@@ -8,7 +8,7 @@ if [ `uname` = 'darwin' ];then
 fi
 
 function peco-history() {
-    local l=`history | awk '{print $2}' | sed -e 's/^\s*[0-9]\+\s\+//' | $tac | peco`
+    local l=`history | sed -e 's/^\s*[0-9]\+\s\+//' | $tac | peco`
     READLINE_LINE=$l
     READLINE_POINT=${#l}
 }
