@@ -37,4 +37,6 @@ elif [ ! -L $SSH_AUTH_SOCK ];then
     ln -snf $SSH_AUTH_SOCK $agent && export SSH_AUTH_SOCK=$agent
 fi
 
+export PATH=$PATH:$HOME/local/bin
+
 source ~/.bashrc.d/func.bash

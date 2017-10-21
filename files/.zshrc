@@ -117,4 +117,6 @@ case "${OSTYPE}" in
         alias la='ls -a  --color=auto'
 esac
 
+export PATH=$PATH:$HOME/local/bin
+
 source ~/.zshrc.d/func.zsh
