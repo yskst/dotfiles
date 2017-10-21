@@ -4,8 +4,8 @@ fi
 
 tac='tac'
 if [ `uname` = 'darwin' ];then
-    tac='tail -r
-fi'
+    tac='tail -r'
+fi
 
 function peco-history() {
     local l=`history -n 1 | $tac | peco`
