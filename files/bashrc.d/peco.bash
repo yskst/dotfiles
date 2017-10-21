@@ -8,7 +8,7 @@ if [ `uname` = 'darwin' ];then
 fi
 
 function peco-history() {
-    local l=`history -n 1 | $tac | peco`
+    local l=`history | awk '{print $2}' | $tac | peco`
     READLINE_LINE=$l
     READLINE_POINT=${#l}
 }
