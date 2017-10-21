@@ -37,7 +37,7 @@ else
 	wget https://github.com/peco/peco/releases/download/v0.5.1/peco_linux_amd64.tar.gz
 	mkdir -p $(HOME)/local/bin
 	tar -zxf peco_linux_amd64.tar.gz
-	cp peco_linum_amd64/peco ~/local/bin
+	cp peco_linux_amd64/peco ~/local/bin
 	rm -rf peco_linux_amd64.tar.gz peco_linum_amd64/
 endif
 
