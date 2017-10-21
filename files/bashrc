@@ -1,0 +1,43 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+PS1='\[\e\\\][\u@\h \W]\$ '
+
+case "${OSTYPE}" in
+    darwin*) # For BSD
+        alias ls='ls -BG'
+        alias ll='ls -hGl'
+        alias la='ls -aG'
+        ;;
+    linux*) # For Gnu.
+        alias ls='ls -B  --color=auto'
+        alias ll='ls -lh --color=auto'
+        alias la='ls -a  --color=auto'
+esac
+
+alias df='df -h'
+alias du='du -h'
+alias diff='diff -u -s'
+
+if [ -f /usr/bin/gnome-terminal ]; then
+    alias xterm='/usr/bin/gnome-terminal'
+fi
+
+# ssh auth socket
+agent=${HOME}/.ssh/agent
+if [ -S $agent ];then
+    export SSH_AUTH_SOCK=$agent
+elif [ ! -S $SSH_AUTH_SOCK ];then
+    export SSH_AUTH_SOCK=$agent
+elif [ ! -L $SSH_AUTH_SOCK ];then
+    ln -snf $SSH_AUTH_SOCK $agent && export SSH_AUTH_SOCK=$agent
+fi
+
+export PATH=$PATH:$HOME/local/bin
+
+source ~/.bashrc.d/func.bash
+source ~/.bashrc.d/peco.bash

@@ -1,0 +1,125 @@
+
+### keybord setting ###
+bindkey -e        			# keybind set emacs mode.
+bindkey "^H"    backward-delete-char
+bindkey "^[[3~" delete-char
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
+
+setopt interactive_comments # コマンドラインでも#以降をコメントと見なす
+
+### miscellaneous setting ###
+setopt correct    			 # fix command spel
+setopt magic_equal_subst # after '=', complement(e.g. --prefix=/usr)
+setopt prompt_subst			 # complement in prompt definition.
+setopt notify						 # instantly show status of back ground jobs.
+setopt equals						 # =command equal to `which command`
+
+### complement setting ###
+autoload -U compinit;compinit # on complemention
+setopt nolistbeep # no beep on completion
+setopt auto_list							# show candidacy fo complemention
+setopt auto_menu							# push Tab key, show candidacy in order
+setopt list_packed						# candidate is packed and displayed.
+zstyle ':completion:*:*files' ignore-patterns '*?~' '*\#' # thebackup file does not show in completion
+# big or little letter isn't distinguished in complementation
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 
+
+
+### Glog ###
+setopt extended_glob	# extend glob function
+unsetopt caseglob			# big or small letter is not distinguished.
+
+
+### History ###
+export HISTFILE=~/.zsh_history # file of history
+#export SAVESIZE=10000						# the number of history saving in memory
+export HISTSIZE=10000					# the number of history saving in file
+setopt share_history		# share history other shells
+setopt hist_reduce_blanks # excessive space deleted when save.
+setopt hist_save_no_dups #重複するコマンドが保存される時、古い方を削除する
+# 複数のzshを同時に使用した際に履歴ファイルを上書きせず追加する
+setopt append_history
+# ヒストリーに重複を表示しない
+setopt histignorealldups
+
+### vcs_info ###
+autoload -U vcs_info; vcs_info
+# commitしていない変更をチェックする
+zstyle ':vcs_info:git:*' check-for-changes true
+# commitしていないstageがあることを示す表示
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+# addしていない変更があることを示す表示
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+# gitリポジトリに対して、変更情報とリポジトリ情報を表示する
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+# gitリポジトリに対して、コンフリクトなどの情報を表示する
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+
+
+### Prompt ###
+# coloring in prompt
+autoload -U colors; colors
+# normal user
+tmp_prompt="[%{${fg[cyan]}%}%m@%n %{${reset_color}%}] "
+tmp_prompt2="%{${fg[cyan]}%}%_> %{${reset_color}%}"
+tmp_rprompt="%{${fg[green]}%}[%~]%{${reset_color}%}"'$vcs_info_msg_0_'
+tmp_sprompt="%{${fg[yellow]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
+
+# root user. (set bold font and under bar)
+if [ ${UID} -eq 0 ]; then
+  tmp_prompt="%B%U${tmp_prompt}%u%b"
+  tmp_prompt2="%B%U${tmp_prompt2}%u%b"
+  tmp_rprompt="%B%U${tmp_rprompt}%u%b"
+  tmp_sprompt="%B%U${tmp_sprompt}%u%b"
+fi
+
+PROMPT=$tmp_prompt    # normal prompt
+PROMPT2=$tmp_prompt2  # secondly prompt(there is command two lines)
+RPROMPT=$tmp_rprompt  # right side prompt
+SPROMPT=$tmp_sprompt  # for spelling correction
+
+
+### Title (user@hostname) ###
+case "${TERM}" in
+    kterm*|xterm*)
+        precmd() {
+            vcs_info
+            echo -ne "\033]0;${USER}@${HOST%%.*}\007"
+        }
+        ;;
+
+    screen)
+        # Setting title to command name.
+        # When command is not execuing, setting title to 'zsh'
+        preexec(){ 
+            mycmd=(${(s: :)${1}})
+            echo -ne "\ek$mycmd[1]\e\\" 
+        }
+        precmd(){ 
+            echo -ne "\ekzsh\e\\" 
+            vcs_info
+        }
+esac
+
+### setting alias ###
+alias df='df -h'
+alias du='du -h'
+alias diff='diff -s'
+
+case "${OSTYPE}" in
+    darwin*) # For BSD
+        alias ls='ls -BG'
+        alias ll='ls -hGl'
+        alias la='ls -aG'
+        ;;
+    linux*) # For Gnu.
+        alias ls='ls -B  --color=auto'
+        alias ll='ls -lh --color=auto'
+        alias la='ls -a  --color=auto'
+esac
+
+export PATH=$PATH:$HOME/local/bin
+
+source ~/.zshrc.d/func.zsh
+source ~/.zshrc.d/peco.zsh
