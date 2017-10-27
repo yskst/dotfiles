@@ -16,10 +16,9 @@ zle -N peco-history
 bindkey '^R' peco-history
 
 function peco-ssh() {
-    echo "peco-ssh" 1>&2
-    local HOST=`cut -d' ' -f1 $HOME/.ssh/known_hosts | eval $tac | tr ',' '\n'| peco --prompt 'ssh> '`
-    if [ -n $HOST ];then
-        BUFFER="ssh $HOST"
+    local h=`cut -d' ' -f1 $HOME/.ssh/known_hosts | eval $tac | tr ',' '\n'| peco --prompt 'ssh> '`
+    if [ -n $h ];then
+        BUFFER="ssh $h"
     fi
     zle reset-prompt
 }
