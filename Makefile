@@ -6,15 +6,15 @@ dsts = $(patsubst files/%, $(HOME)/.%, $(srcs))
 
 UNAME = ${shell uname}
 peco_dsts = $(HOME)/local/bin/peco
-
 ifeq ($(UNAME),Darwin)
 	peco_dsts = /usr/local/bin/peco
 else
 	peco_dsts = $(HOME)/local/bin/peco
 endif
 
+dein_dsts=$(HOME)/.vim/.cache/dein/repos/github.com/Shougo/dein.vim
 
-all: $(peco_dsts) $(dsts)
+all: $(peco_dsts) $(dsts) $(dein_dsts)
 
 clean:
 	$(RM) $(dsts)
