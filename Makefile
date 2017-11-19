@@ -1,5 +1,6 @@
 CP=cp -r
 RM=rm -rf
+MKDIR=mkdir -p
 
 srcs = $(wildcard files/*)
 dsts = $(patsubst files/%, $(HOME)/.%, $(srcs))
@@ -43,3 +44,9 @@ endif
 
 $(HOME)/.%: files/%
 	$(CP) $< $@
+
+$(dein_dsts):
+    $(MKDIR) `dirname $@`
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+    sh install.sh $(HOME)/.vim/.cache/dein
+    $(RM) install.sh
