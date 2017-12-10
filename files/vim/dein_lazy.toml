@@ -1,2 +1,6 @@
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'jelera/vim-javascript-syntax'
+on_ft = ['javascript']

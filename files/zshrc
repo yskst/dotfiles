@@ -123,3 +123,4 @@ export PATH=$PATH:$HOME/local/bin
 
 source ~/.zshrc.d/func.zsh
 source ~/.zshrc.d/peco.zsh
+source ~/.zshrc.d/alias.zsh
