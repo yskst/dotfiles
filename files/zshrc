@@ -119,6 +119,9 @@ case "${OSTYPE}" in
         alias la='ls -a  --color=auto'
 esac
 
+### remove duplication path ###
+typeset -U path PATH
+
 export PATH=$PATH:$HOME/local/bin
 
 source ~/.zshrc.d/func.zsh
