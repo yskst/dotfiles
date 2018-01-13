@@ -1,4 +1,4 @@
-CP=cp -r
+CP=cp -rv
 RM=rm -rf
 MKDIR=mkdir -p
 

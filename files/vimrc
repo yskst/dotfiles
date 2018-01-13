@@ -59,18 +59,18 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/Users/you/.vim/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.vim/.cache/dein/repos/github.com/Shougo/dein.vim
 
 let s:dein_toml=expand('~/.vim/dein.toml')
 let s:dein_toml_lazy=expand('~/.vim/dein_lazy.toml')
 
 " Required:
-if dein#load_state('/Users/you/.vim/.cache/dein')
-  call dein#begin('/Users/you/.vim/.cache/dein')
+if dein#load_state('~/.vim/.cache/dein')
+  call dein#begin('~/.vim/.cache/dein')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/Users/you/.vim/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.vim/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here
    call dein#load_toml(s:dein_toml, {'lazy': 0})
