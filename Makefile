@@ -46,7 +46,7 @@ $(HOME)/.%: files/%
 	$(CP) $< $@
 
 $(dein_dsts):
-    $(MKDIR) `dirname $@`
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-    sh install.sh $(HOME)/.vim/.cache/dein
-    $(RM) install.sh
+	$(MKDIR) `dirname $@`
+	curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+	sh installer.sh $(HOME)/.vim/.cache/dein
+	$(RM) install.sh
