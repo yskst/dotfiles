@@ -28,6 +28,8 @@ set showmatch
 set number      " show line number.
 set cursorline  " highlight the screen line of the cursor.
 set cursorcolumn
+highlight CursorLine ctermfg=Black ctermbg=White
+
 set title       " set terminal's title.
 
 set wildmenu    " use complecation of command line.
