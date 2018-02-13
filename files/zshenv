@@ -1,4 +1,3 @@
-
 ### keybord setting ###
 bindkey -e        			# keybind set emacs mode.
 bindkey "^H"    backward-delete-char
@@ -14,6 +13,8 @@ setopt magic_equal_subst # after '=', complement(e.g. --prefix=/usr)
 setopt prompt_subst			 # complement in prompt definition.
 setopt notify						 # instantly show status of back ground jobs.
 setopt equals						 # =command equal to `which command`
+
+typeset -U path PATH
 
 ### complement setting ###
 autoload -U compinit;compinit # on complemention
