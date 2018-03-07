@@ -14,8 +14,6 @@ setopt prompt_subst			 # complement in prompt definition.
 setopt notify						 # instantly show status of back ground jobs.
 setopt equals						 # =command equal to `which command`
 
-typeset -U path PATH
-
 ### complement setting ###
 autoload -U compinit;compinit # on complemention
 setopt nolistbeep # no beep on completion
@@ -123,7 +121,7 @@ esac
 ### remove duplication path ###
 typeset -U path PATH
 
-export PATH=$PATH:$HOME/local/bin
+export PATH=$PATH:$HOME/local/bin:/usr/local/bin
 
 source ~/.zshrc.d/func.zsh
 source ~/.zshrc.d/peco.zsh
