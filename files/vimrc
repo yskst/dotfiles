@@ -25,7 +25,7 @@ set showmatch
 set number      " show line number.
 set cursorline  " highlight the screen line of the cursor.
 set cursorcolumn
-highlight CursorLine ctermbg=Gray
+highlight CursorColumn ctermbg=Gray
 
 set title       " set terminal's title.
 

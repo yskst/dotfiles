@@ -1,3 +1,5 @@
+export ZSHRC
+
 ### keybord setting ###
 bindkey -e        			# keybind set emacs mode.
 bindkey "^H"    backward-delete-char
