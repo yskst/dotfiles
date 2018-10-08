@@ -33,9 +33,9 @@ unsetopt caseglob			# big or small letter is not distinguished.
 
 
 ### History ###
-export HISTFILE=~/.zsh_history # file of history
-#export SAVESIZE=10000						# the number of history saving in memory
-export HISTSIZE=10000					# the number of history saving in file
+HISTFILE=~/.zsh_history # file of history
+SAVESIZE=10000						# the number of history saving in memory
+HISTSIZE=10000					# the number of history saving in file
 setopt share_history		# share history other shells
 setopt hist_reduce_blanks # excessive space deleted when save.
 setopt hist_save_no_dups #重複するコマンドが保存される時、古い方を削除する
