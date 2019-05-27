@@ -49,5 +49,5 @@ $(dein_dsts):
 	$(MKDIR) `dirname $@`
 	curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 	sh installer.sh $(HOME)/.vim/.cache/dein
-	git --git-dir=~/.vim/.cache/dein/repos/github.com/Shougo/dein.vim/.git checkout 1.0 # for old vim
-	$(RM) install.sh
+	cd ~/.vim/.cache/dein/repos/github.com/Shougo/dein.vim/ && git checkout 1.0 # for old vim
+	$(RM) installer.sh
