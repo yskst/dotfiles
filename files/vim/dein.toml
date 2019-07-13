@@ -85,6 +85,8 @@ hook_add = '''
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 
-
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
